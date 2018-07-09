@@ -1,0 +1,1 @@
+https://beta-dot-custom-vision.appspot.com
