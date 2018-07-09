@@ -1,0 +1,54 @@
+{{/*
+  Copyright 2015 Google Inc. All rights reserved.
+  Use of this source code is governed by the Apache 2.0
+  license that can be found in the LICENSE file.
+*/}}
+<h3>AutoML Image Results</h3>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4>Your uploaded image</h4>
+      <p>
+        <img style='display:block;' src='data:image/jpeg;base64,{{.ImageContent}}' />
+      </p>
+    </div>
+    <div class="col">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="VisionAPIResults-tab" data-toggle="tab" href="#VisionAPIResults" role="tab" aria-controls="home" aria-selected="true">Vision API Results</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="AutoMLResults-tab" data-toggle="tab" href="#AutoMLResults" role="tab" aria-controls="profile" aria-selected="false">AutoML</a>
+        </li>
+      </ul>
+      
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade" id="VisionAPIResults" role="tabpanel" aria-labelledby="VisionAPIResults-tab">
+          {{range .LabelAnnotations}}
+            <div class="media">
+              <div class="media-body">
+                <h4>{{.Description}}</h4>
+                <p>{{.Score}}</p>
+              </div>
+            </div>
+          {{else}}
+            <p>No sports detected!</p>
+          {{end}}
+        </div>
+        <div class="tab-pane fade" id="AutoMLResults" role="tabpanel" aria-labelledby="AutoMLResults-tab">
+          {{range .CustomLabelAnnotations}}
+            <div class="media">
+              <div class="media-body">
+                <h4>{{.Label}}</h4>
+                <p>{{.Score}}</p>
+              </div>
+            </div>
+          {{else}}
+            <p>No sports detected.</p>
+          {{end}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

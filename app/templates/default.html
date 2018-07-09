@@ -1,0 +1,31 @@
+{{/*
+  Copyright 2015 Google Inc. All rights reserved.
+  Use of this source code is governed by the Apache 2.0
+  license that can be found in the LICENSE file.
+*/}}
+<h3>Images</h3>
+
+<div>
+  <p>Upload an image and we will run our custom AutoML model to determine which sport</p>
+  <p>The model has been trained to detect:</p>
+  <ul class="list-group  list-group-flush">
+      <li class="list-group-item">Athletics</li>
+      <li class="list-group-item">Baseball</li>
+      <li class="list-group-item">Basketball</li>
+      <li class="list-group-item">Cricket</li>
+      <li class="list-group-item">Golf</li>
+      <li class="list-group-item">Gymnastics</li>
+      <li class="list-group-item">Soccer</li>
+      <li class="list-group-item">Swimming</li>
+      <li class="list-group-item">Volleyball</li>
+      <li class="list-group-item">Tennis</li>
+  </ul>
+</div>
+
+<form enctype="multipart/form-data" action="/results" method="post">
+  <div class="form-group">
+    <input type="file" name="imageToProcess" class="form-control"/>
+    <input type="hidden" name="token" value="{{.}}"/>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
